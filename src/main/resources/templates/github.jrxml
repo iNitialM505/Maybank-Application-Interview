@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<!-- Created By M Lukman  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GitHubReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92039ef9-12ab-439a-9c27-5a5d9b38214e">
+    <parameter name="Query" class="java.lang.String"/>
+    <parameter name="Pagination" class="java.lang.String"/>
+    <parameter name="TotalRow" class="java.lang.Integer"/>
+    <parameter name="TotalCount" class="java.lang.Integer"/>
+    <field name="avatar_url" class="java.lang.String"/>
+    <field name="url" class="java.lang.String"/>
+    <field name="login" class="java.lang.String"/>
+    <field name="repos_url" class="java.lang.String"/>
+    <title>
+        <band height="140" splitType="Stretch">
+            <staticText>
+                <reportElement x="170" y="0" width="220" height="30" uuid="1c64749b-4bb0-4901-9fb7-49746f4fef83"/>
+                <textElement textAlignment="Center">
+                    <font size="16" isBold="true"/>
+                </textElement>
+                <text><![CDATA[GITHUB REPORTS USERS]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="31" width="76" height="18" uuid="b77e7d0f-1636-4607-95de-ea8c0344dffb"/>
+                <textElement>
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Report Detail]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="50" width="76" height="18" uuid="46cf855d-d848-4112-aeaa-a7332350d429"/>
+                <text><![CDATA[Search Query :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="78" y="49" width="72" height="19" uuid="269b9db2-8f9a-4b1c-aa75-a017651c3b06"/>
+                <textFieldExpression><![CDATA[$P{Query}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="70" width="76" height="18" uuid="828cfd2f-80d0-4ebf-ad79-f6e560c40d5a"/>
+                <text><![CDATA[Total Page :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="78" y="69" width="72" height="19" uuid="9860a5e6-c11b-4daf-8889-53bbcac49afa"/>
+                <textFieldExpression><![CDATA[$P{Pagination}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="89" width="76" height="18" uuid="61450b60-d99b-4360-8b3e-162b93e6d027"/>
+                <text><![CDATA[Total Row :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="78" y="88" width="72" height="19" uuid="a09c94a8-2339-4097-918b-985603e90b80"/>
+                <textFieldExpression><![CDATA[$P{TotalRow}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="108" width="76" height="18" uuid="c0c191ae-9cdd-4872-8347-b8388e57d563"/>
+                <text><![CDATA[Total Data :]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="78" y="107" width="72" height="19" uuid="618f95ec-1f4a-417c-9094-944c7b62fb70"/>
+                <textFieldExpression><![CDATA[$P{TotalCount}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="70">
+            <rectangle>
+                <reportElement x="0" y="0" width="555" height="70" uuid="a8d4e583-2257-4b0f-a7b3-dc8f4a4db91a"/>
+                <graphicElement>
+                    <pen lineWidth="0.5"/>
+                </graphicElement>
+            </rectangle>
+            <textField>
+                <reportElement x="10" y="10" width="40" height="40" uuid="a6dfe446-739b-404b-8a6b-574f20bcc15e"/>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT} + "."]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement x="50" y="10" width="40" height="40" uuid="a6dfe446-739b-404b-8a6b-574f20bcc15e"/>
+                <imageExpression><![CDATA[$F{avatar_url}]]></imageExpression>
+            </image>
+            <textField>
+                <reportElement x="100" y="10" width="340" height="20" uuid="f180451b-6425-45d0-9dda-4767f846755e"/>
+                <textFieldExpression><![CDATA["Username Github : " + $F{login}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="30" width="340" height="20" uuid="c6498ee4-dd4e-485e-832c-5b059df8ee54"/>
+                <textFieldExpression><![CDATA["URL Github : " + $F{url}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="50" width="340" height="20" uuid="e3f5af67-c617-4334-a781-6ab8dfdf3ce7"/>
+                <textFieldExpression><![CDATA["Repository URL : " + $F{repos_url}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

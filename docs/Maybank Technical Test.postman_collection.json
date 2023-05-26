@@ -1,0 +1,615 @@
+{
+	"info": {
+		"_postman_id": "f0bcff4a-736e-479c-9d19-c8bc22eadfbb",
+		"name": "Maybank Technical Test",
+		"description": "StartFragment\n\n## **API Collection**\n\n#### **Report Search**\n\n- **Method**: `GET`\n- **URL**: `/v1/report`\n- **Query Parameters**:\n    - `search` (Required: true) - Allows the search of users and displays the results in a PDF.\n    - `sort` (Required: false) - Sorts the results of your query by number of followers or repositories, or by the date the user joined GitHub.\n    - `order` (Required: false) - Determines whether the first search result returned has the highest number of matches (desc) or lowest number of matches (asc).\n    - `page` (Required: false) - Page number of the results to fetch.\n    - `size` (Required: false) - The number of results per page (max 100).\n- **Description**: Searches for reports based on specific criteria (sort=desc, order=repository, page=0).\n    \n\n#### **List History Report**\n\n- **Method**: `GET`\n- **URL**: `/v1/report/history`\n- **Description**: Retrieves a list of report history.\n    \n\n#### **Download Report History**\n\n- **Method**: `GET`\n- **URL**: `/v1/report/download`\n- **Query Parameters**:\n    - `id` (Required: true) - Allows clients to download history export data with specific file id.\n- **Description**: Downloads the report history based on a specific id.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21901515"
+	},
+	"item": [
+		{
+			"name": "Report Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_host}}/v1/report?search=iNitial-M",
+					"host": [
+						"{{url_host}}"
+					],
+					"path": [
+						"v1",
+						"report"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "iNitial-M",
+							"description": "Required: true\nAllow to search user and show into PDF"
+						},
+						{
+							"key": "sort",
+							"value": "repositories",
+							"description": "Required: false\nDefault value: repositories\n\nSorts the results of your query by number of followers or repositories, or when the person joined GitHub.",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "desc",
+							"description": "Required: false\nDefault value: desc\n\nDetermines whether the first search result returned is the highest number of matches (desc) or lowest number of matches (asc)",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"description": "Required: false\nDefault value: 0\n\nPage number of the results to fetch.",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "100",
+							"description": "Required: false\nDefault Value: 5\n\nThe number of results per page (max 100).",
+							"disabled": true
+						}
+					]
+				},
+				"description": "**Find user and generate pdf**"
+			},
+			"response": [
+				{
+					"name": "Parameter search is required",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "qq",
+									"description": "Required: true\nAllow to search user and show into PDF",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "repositories",
+									"description": "Required: false\nDefault value: repositories\n\nSorts the results of your query by number of followers or repositories, or when the person joined GitHub.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"description": "Required: false\nDefault value: desc\n\nDetermines whether the first search result returned is the highest number of matches (desc) or lowest number of matches (asc)",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "0",
+									"description": "Required: false\nDefault value: 0\n\nPage number of the results to fetch.",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "100",
+									"description": "Required: false\nDefault Value: 5\n\nThe number of results per page (max 100).",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:40:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 400,\n    \"error_message\": \"Parameter search is required\"\n}"
+				},
+				{
+					"name": "Record Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report?search=jsadhjsadsajdjsa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "jsadhjsadsajdjsa",
+									"description": "Required: true\nAllow to search user and show into PDF"
+								},
+								{
+									"key": "sort",
+									"value": "repositories",
+									"description": "Required: false\nDefault value: repositories\n\nSorts the results of your query by number of followers or repositories, or when the person joined GitHub.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"description": "Required: false\nDefault value: desc\n\nDetermines whether the first search result returned is the highest number of matches (desc) or lowest number of matches (asc)",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "10000",
+									"description": "Required: false\nDefault value: 0\n\nPage number of the results to fetch.",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "100",
+									"description": "Required: false\nDefault Value: 5\n\nThe number of results per page (max 100).",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:41:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 404,\n    \"error_message\": \"Sorry no record found\"\n}"
+				},
+				{
+					"name": "Only the first 1000 search results are available",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report?search=q&page=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "q",
+									"description": "Required: true\nAllow to search user and show into PDF"
+								},
+								{
+									"key": "sort",
+									"value": "repositories",
+									"description": "Required: false\nDefault value: repositories\n\nSorts the results of your query by number of followers or repositories, or when the person joined GitHub.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"description": "Required: false\nDefault value: desc\n\nDetermines whether the first search result returned is the highest number of matches (desc) or lowest number of matches (asc)",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "10000",
+									"description": "Required: false\nDefault value: 0\n\nPage number of the results to fetch."
+								},
+								{
+									"key": "size",
+									"value": "100",
+									"description": "Required: false\nDefault Value: 5\n\nThe number of results per page (max 100).",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:41:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 422,\n    \"error_message\": \"Only the first 1000 search results are available\"\n}"
+				},
+				{
+					"name": "Page size maximum 100",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report?search=q&size=1001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "q",
+									"description": "Required: true\nAllow to search user and show into PDF"
+								},
+								{
+									"key": "sort",
+									"value": "repositories",
+									"description": "Required: false\nDefault value: repositories\n\nSorts the results of your query by number of followers or repositories, or when the person joined GitHub.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"description": "Required: false\nDefault value: desc\n\nDetermines whether the first search result returned is the highest number of matches (desc) or lowest number of matches (asc)",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "10000",
+									"description": "Required: false\nDefault value: 0\n\nPage number of the results to fetch.",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "1001",
+									"description": "Required: false\nDefault Value: 5\n\nThe number of results per page (max 100)."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:42:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 400,\n    \"error_message\": \"Page size maximum 100\"\n}"
+				}
+			]
+		},
+		{
+			"name": "List History Report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_host}}/v1/report/history",
+					"host": [
+						"{{url_host}}"
+					],
+					"path": [
+						"v1",
+						"report",
+						"history"
+					]
+				},
+				"description": "**Fetch All History**\n\nFetch All History of Report Search and return file_id, parameter search, total_data"
+			},
+			"response": [
+				{
+					"name": "Record Not Found but return 200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report",
+								"history"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:44:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Sorry no record found\",\n    \"data\": []\n}"
+				},
+				{
+					"name": "Successfully get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report",
+								"history"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:45:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully get data\",\n    \"data\": [\n        {\n            \"id\": 33,\n            \"parameter\": \"iNitial-M\",\n            \"file_id\": \"58640630-1630-4b47-a071-a621353f2ed5\",\n            \"total_data\": 4\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Download Report History",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_host}}/v1/report/download?id=58640630-1630-4b47-a071-a621353f2ed5",
+					"host": [
+						"{{url_host}}"
+					],
+					"path": [
+						"v1",
+						"report",
+						"download"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "58640630-1630-4b47-a071-a621353f2ed5",
+							"description": "Required: true"
+						}
+					]
+				},
+				"description": "**Download Report History**\n\nDownload report history by file id"
+			},
+			"response": [
+				{
+					"name": "Record Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report/download?id=58640630-1630-4b47-a071-a621353f2ed5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report",
+								"download"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "58640630-1630-4b47-a071-a621353f2ed5",
+									"description": "Required: true"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:45:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 404,\n    \"error_message\": \"Sorry no record found\"\n}"
+				},
+				{
+					"name": "Parameter is missing",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v1/report/download",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v1",
+								"report",
+								"download"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4f866f47-1d55-45ba-b02f-441094521399a",
+									"description": "Required: true",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 May 2023 09:49:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error_code\": 400,\n    \"error_message\": \"Parameter 'id' is missing\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "url_host",
+			"value": "http://localhost:8080"
+		}
+	]
+}

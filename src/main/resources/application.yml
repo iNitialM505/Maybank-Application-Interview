@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://<your-database-host>/maybank # The URL of your MySQL database
+    username: <your-username> # The username of your MySQL database
+    password: <your-password> # The password of your MySQL database
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update # (Optional) This option automatically updates the database schema to match your entities.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect # This option specifies the SQL dialect of your database
+        format_sql: true # (Optional) This option pretty-prints SQL statements in the console
+
+api:
+  github:
+    token: <your-github-token> # Your GitHub API token
+
+do:
+  space:
+    key: <your-space-key> # Your DigitalOcean Space access key
+    secret: <your-space-secret> # Your DigitalOcean Space secret access key
+    endpoint: <your-space-endpoint> # The endpoint of your DigitalOcean Space
+    region: <your-space-region> # The region where your DigitalOcean Space resides
+    bucket: <your-space-bucket> # The name of your DigitalOcean Space bucket
