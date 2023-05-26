@@ -1,13 +1,13 @@
 # Maybank Technical Test
 
-Spring Boot Application for Maybank Technical Test
+This repository contains a Spring Boot application developed for the Maybank Technical Test. The application is designed to showcase various functionalities related to interacting with the GitHub API and generating reports.
 
 ## Getting Started
 
 ### Table of Contents
 > - [Prerequisites](#prerequisites)
 > - [Project Structure](#project-structure)
-> - [Details Class](#details-class)
+> - [Details Project Structure](#details-project-structure)
 > - [Design Pattern](#design-pattern)
 > - [Details Database](#details-database)
 > - [Installation](#installation)
@@ -33,93 +33,151 @@ Spring Boot Application for Maybank Technical Test
 ### Project Structure
 ```
 .
+├── .gitignore
+├── .mvn
+│   └── wrapper
+│       ├── maven-wrapper.jar
+│       └── maven-wrapper.properties
+├── LICENSE
+├── README.md
+├── HELP.md
 ├── docs
 │   └── Maybank Technical Test.postman_collection.json
-├── src
-│   ├── main/java/dev/lukman/maybank
-│   │   ├── MaybankApplication.java
-│   │   ├── adapter/GithubClient.java
-│   │   ├── api/request/RequestParameterSearch.java
-│   │   ├── api/request
-│   │   │   ├── ErrorResponse.java
-│   │   │   └── ResponseSuccess.java
-│   │   ├── configuration
-│   │   │   ├── HttpClientConfig.java
-│   │   │   └── SpaceConfig.java
-│   │   ├── constant
-│   │   │   ├── GlobalConstant.java
-│   │   │   └── ResponseCode.java
-│   │   ├── controller/RestGithubController.java
-│   │   ├── dto
-│   │   │   ├── GithubResponse.java
-│   │   │   ├── GithubUserDTO.java
-│   │   │   └── ReportHistoryDTO.java
-│   │   ├── exception
-│   │   │   ├── ErrorException.java
-│   │   │   └── ExceptionControllerAdvice.java
-│   │   ├── model/ReportHistory.java
-│   │   ├── repository/ReportHistoryRepository.java
-│   │   └── service
-│   │       ├── JasperService.java
-│   │       ├── ReportService.java
-│   │       └── impl
-│   │           ├── JasperServiceImpl.java
-│   │           └── ReportServiceImpl.java
-│   └── resources
-│       ├── application.yml
-│       └── templates/github.jrxml
-├── .gitignore
-├── HELP.md
 ├── mvnw
 ├── mvnw.cmd
 ├── pom.xml
-└── README.md
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── dev
+    │   │       └── lukman
+    │   │           └── maybank
+    │   │               ├── MaybankApplication.java
+    │   │               ├── adapter
+    │   │               │   └── GithubClient.java
+    │   │               ├── api
+    │   │               │   ├── request
+    │   │               │   │   └── RequestParameterSearch.java
+    │   │               │   └── response
+    │   │               │       ├── ErrorResponse.java
+    │   │               │       └── ResponseSuccess.java
+    │   │               ├── configuration
+    │   │               │   ├── HttpClientConfig.java
+    │   │               │   └── SpaceConfig.java
+    │   │               ├── constant
+    │   │               │   ├── GlobalConstant.java
+    │   │               │   └── ResponseMessage.java
+    │   │               ├── controller
+    │   │               │   └── RestGithubController.java
+    │   │               ├── dto
+    │   │               │   ├── GithubResponse.java
+    │   │               │   ├── GithubUserDTO.java
+    │   │               │   └── ReportHistoryDTO.java
+    │   │               ├── exception
+    │   │               │   ├── ErrorException.java
+    │   │               │   └── ExceptionControllerAdvice.java
+    │   │               ├── model
+    │   │               │   └── ReportHistory.java
+    │   │               ├── repository
+    │   │               │   └── ReportHistoryRepository.java
+    │   │               ├── service
+    │   │               │   ├── JasperService.java
+    │   │               │   ├── ReportService.java
+    │   │               │   └── impl
+    │   │               │       ├── JasperServiceImpl.java
+    │   │               │       └── ReportServiceImpl.java
+    │   │               └── utils
+    │   │                   └── GenerateRandomString.java
+    │   └── resources
+    │       ├── application.yml
+    │       └── templates
+    │           └── github.jrxml
+    └── test
+        └── java
+            └── dev
+                └── lukman
+                    └── maybank
+                        ├── MaybankApplicationTests.java
+                        ├── adapter
+                        │   └── GithubClientTest.java
+                        └── service
+                            └── impl
+                                ├── JasperServiceImplTest.java
+                                └── ReportServiceImplTest.java
+
 ```
 
 ---
 
-### Details Class
-- Package `dev.lukman.maybank`
-  - adapter
-    - `GithubClient.java` - Github API Client
-  - api
-    - request
-      - `RequestParameterSearch.java` - Request Parameter Search
-    - response
-      - `ErrorResponse.java` - Error Response
-      - `ResponseSuccess.java` - Success Response
-  - configuration
-    - `HttpClientConfig.java` - Http Client Config
-    - `SpaceConfig.java` - Space Config
-  - constant
-    - `GlobalConstant.java` - Global Constant
-    - `ResponseCode.java` - Response Code Constant
-  - controller
-    - `RestGithubController.java` - Rest Github Controller
-  - dto
-    - `GithubResponse.java` - Github Response From API
-    - `GithubUserDTO.java` - Github User DTO
-    - `ReportHistoryDTO.java` - Report History DTO
-  - exception
-    - `ErrorException.java` - Error Exception
-    - `ExceptionControllerAdvice.java` - Exception Controller Advice
-  - model
-    - `ReportHistory.java` - Report History Model
-  - repository
-    - `ReportHistoryRepository.java` - Report History Repository
-  - service
-    - `JasperService.java` - Jasper Service
-    - `ReportService.java` - Report Service
-    - impl
-      - `JasperServiceImpl.java` - Jasper Service Impl
-      - `ReportServiceImpl.java` - Report Service Impl
-  - `MaybankApplication.java` - Main Class
+### Details Project Structure
+- `MaybankApplication.java`: The main class responsible for launching the Maybank application.
+
+- Package `dev.lukman.maybank.adapter`:
+    - `GithubClient.java`: An adapter class that interacts with the GitHub API.
+
+- Package `dev.lukman.maybank.api.request`:
+    - `RequestParameterSearch.java`: Represents the request parameters for searching.
+
+- Package `dev.lukman.maybank.api.response`:
+    - `ErrorResponse.java`: Represents an error response from the API.
+    - `ResponseSuccess.java`: Represents a successful response from the API.
+
+- Package `dev.lukman.maybank.configuration`:
+    - `HttpClientConfig.java`: Configures the HTTP client settings.
+    - `SpaceConfig.java`: Configures the access to DigitalOcean Spaces.
+
+- Package `dev.lukman.maybank.constant`:
+    - `GlobalConstant.java`: Contains global constants used in the application.
+    - `ResponseMessage.java`: Contains predefined response message constants.
+
+- Package `dev.lukman.maybank.controller`:
+    - `RestGithubController.java`: The controller class responsible for handling REST API requests related to GitHub operations.
+
+- Package `dev.lukman.maybank.dto`:
+    - `GithubResponse.java`: Represents a response from the GitHub API.
+    - `GithubUserDTO.java`: Data Transfer Object (DTO) for GitHub user details.
+    - `ReportHistoryDTO.java`: Data Transfer Object (DTO) for report history details.
+
+- Package `dev.lukman.maybank.exception`:
+    - `ErrorException.java`: Represents a custom error exception within the application.
+    - `ExceptionControllerAdvice.java`: Provides global exception handling for the application.
+
+- Package `dev.lukman.maybank.model`:
+    - `ReportHistory.java`: Represents the model for report history.
+
+- Package `dev.lukman.maybank.repository`:
+    - `ReportHistoryRepository.java`: The repository interface for accessing report history data.
+
+- Package `dev.lukman.maybank.service`:
+    - `JasperService.java`: The service interface for Jasper-related operations.
+    - `ReportService.java`: The service interface for report-related operations.
+
+- Package `dev.lukman.maybank.service.impl`:
+    - `JasperServiceImpl.java`: The implementation of the `JasperService` interface.
+    - `ReportServiceImpl.java`: The implementation of the `ReportService` interface.
+
+- Package `dev.lukman.maybank.utils`:
+    - `GenerateRandomString.java`: A utility class for generating random strings.
+
+- File `application.yml`: The configuration file for the application.
+- File `github.jrxml`: The Jasper template for GitHub reports.
+
+- File `.gitignore`: The list of files and directories ignored by Git.
+- File `LICENSE`: The project's license.
+- File `README.md`: The project's documentation.
+- File `Maybank Technical Test.postman_collection.json`: The Postman collection for API testing.
+- File `pom.xml`: The Maven configuration file for the project.
+- Files `mvnw` and `mvnw.cmd`: The Maven wrapper files for running Maven commands on the project.
+- Directory `src/main/java`: The main directory for Java source code.
+- Directory `src/main/resources`: The directory for required application resources.
+- Directory `src/test/java`: The directory for testing-related source code.
 
 ---
 
 ### Design Pattern
 
-This project follows a number of software design patterns, which help in maintaining a well-structured and scalable codebase. Below are the key design patterns identified:
+This project follows much software design patterns, which help in maintaining a well-structured and scalable codebase. Below are the key design patterns identified:
+
 1. #### Layered (N-tier) pattern:
    - This is an architectural pattern which can be seen in the separation of responsibilities into distinct layers such as controller, service, repository, etc. Each layer has specific roles and responsibilities, providing a clean separation of concerns.
       - Controller Layer (controller): `RestGithubController.java` is part of this layer. This layer is responsible for handling HTTP requests and responses.
@@ -128,7 +186,7 @@ This project follows a number of software design patterns, which help in maintai
       - Model Layer (model): `ReportHistory.java` is part of this layer. This layer represents data and the rules that govern access to and updates of this data.
       - DTO Layer (dto): `GithubResponse.java`, `GithubUserDTO.java`, `ReportHistoryDTO.java` are part of this layer. Data Transfer Objects are used to transfer data between processes, reducing the number of method calls.
 2. ####  Adapter pattern: 
-   - `GithubClient.java` could be seen as an adapter for Github's API. It's the piece of code that is directly responsible for making requests to Github's API and might handle translating between the application's models and the API's models.
+   - `GithubClient.java` could be seen as an adapter for GitHub's API. It's the piece of code that is directly responsible for making requests to GitHub's API and might handle translating between the application's models and the API's models.
 3. #### Singleton pattern: 
    - The `HttpClientConfig.java`, `SpaceConfig.java`, `GlobalConstant.java`, `ResponseCode.java` classes are potential candidates for the singleton pattern. If these classes hold application-wide, shared resources (such as configuration parameters), then they could be implemented as singletons.
 4. #### Factory pattern: Factory pattern: 
@@ -208,13 +266,13 @@ This project follows a number of software design patterns, which help in maintai
 2. #### List History Report 
    - Method: `GET`
    - URL: `/v1/report/history`
-   - Description: Retrieves a list of report history.
+   - Description: Retrieve a list of report history.
 3. #### Download Report History
    - Method: `GET`
    - URL: `/v1/report/download`
    - Query Parameters:
      - `id` (Required: `true`) - Allows clients to download history export data with specific file id.
-   - Description: Downloads the report history based on a specific id.
+   - Description: Download the report history based on a specific id.
 ---
 
 ### Built With
